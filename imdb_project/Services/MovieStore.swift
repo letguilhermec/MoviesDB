@@ -13,7 +13,7 @@ class MovieStore: MovieService {
   private init() { }
   
   // API Key from TMDB
-  private let apiKey = ""
+  private let apiKey = "898cc78fa6bc8bfc8751f9665284d307"
   private let baseApiURL = "https://api.themoviedb.org/3"
   private let urlSession = URLSession.shared
   private let jsonDecoder = Utils.jsonDecoder
