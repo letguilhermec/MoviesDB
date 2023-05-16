@@ -8,13 +8,31 @@
 import SwiftUI
 
 struct MoviePosterCarouselView: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+  let title: String
+  let movies: [Movie]
+  
+  var body: some View {
+    VStack(alignment: .leading, spacing: 16) {
+      Text(title)
+        .font(.title)
+        .fontWeight(.bold)
+        .padding(.horizontal)
+      
+      ScrollView(.horizontal, showsIndicators: false) {
+        HStack(alignment: .top, spacing: 16) {
+          ForEach(self.movies) { movie in
+            MoviePosterCard(movie: movie)
+              .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
+              .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
+          }
+        }
+      }
     }
+  }
 }
 
 struct MoviePosterCarouselView_Previews: PreviewProvider {
-    static var previews: some View {
-        MoviePosterCarouselView()
-    }
+  static var previews: some View {
+    MoviePosterCarouselView(title: "Now Playing", movies: Movie.stubbedMovies)
+  }
 }
