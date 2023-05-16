@@ -15,6 +15,10 @@
 		B223B3502A13C44A00708DC8 /* MovieService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B34F2A13C44A00708DC8 /* MovieService.swift */; };
 		B223B3522A13C73F00708DC8 /* MovieStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3512A13C73F00708DC8 /* MovieStore.swift */; };
 		B223B3542A13CF0500708DC8 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3532A13CF0500708DC8 /* Utils.swift */; };
+		B223B3572A13EBAE00708DC8 /* Movie+Stub.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3562A13EBAE00708DC8 /* Movie+Stub.swift */; };
+		B223B35A2A13EC2800708DC8 /* movie_info.json in Resources */ = {isa = PBXBuildFile; fileRef = B223B3592A13EC2800708DC8 /* movie_info.json */; };
+		B223B35C2A13EC4600708DC8 /* movie_list.json in Resources */ = {isa = PBXBuildFile; fileRef = B223B35B2A13EC4600708DC8 /* movie_list.json */; };
+		B223B35E2A13EC6000708DC8 /* search_movie.json in Resources */ = {isa = PBXBuildFile; fileRef = B223B35D2A13EC6000708DC8 /* search_movie.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +31,10 @@
 		B223B34F2A13C44A00708DC8 /* MovieService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieService.swift; sourceTree = "<group>"; };
 		B223B3512A13C73F00708DC8 /* MovieStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieStore.swift; sourceTree = "<group>"; };
 		B223B3532A13CF0500708DC8 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		B223B3562A13EBAE00708DC8 /* Movie+Stub.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Stub.swift"; sourceTree = "<group>"; };
+		B223B3592A13EC2800708DC8 /* movie_info.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movie_info.json; sourceTree = "<group>"; };
+		B223B35B2A13EC4600708DC8 /* movie_list.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = movie_list.json; sourceTree = "<group>"; };
+		B223B35D2A13EC6000708DC8 /* search_movie.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = search_movie.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +67,7 @@
 		B223B33C2A13B6F100708DC8 /* imdb_project */ = {
 			isa = PBXGroup;
 			children = (
+				B223B3582A13EBCC00708DC8 /* Resources */,
 				B223B34E2A13C43700708DC8 /* Services */,
 				B223B34B2A13BEA200708DC8 /* Models */,
 				B223B33D2A13B6F100708DC8 /* imdb_projectApp.swift */,
@@ -82,6 +91,7 @@
 			isa = PBXGroup;
 			children = (
 				B223B34C2A13C3B300708DC8 /* Movie.swift */,
+				B223B3562A13EBAE00708DC8 /* Movie+Stub.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -93,6 +103,16 @@
 				B223B3512A13C73F00708DC8 /* MovieStore.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		B223B3582A13EBCC00708DC8 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B223B3592A13EC2800708DC8 /* movie_info.json */,
+				B223B35B2A13EC4600708DC8 /* movie_list.json */,
+				B223B35D2A13EC6000708DC8 /* search_movie.json */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -154,6 +174,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B223B3452A13B6F300708DC8 /* Preview Assets.xcassets in Resources */,
+				B223B35A2A13EC2800708DC8 /* movie_info.json in Resources */,
+				B223B35C2A13EC4600708DC8 /* movie_list.json in Resources */,
+				B223B35E2A13EC6000708DC8 /* search_movie.json in Resources */,
 				B223B3422A13B6F300708DC8 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -168,6 +191,7 @@
 				B223B3402A13B6F100708DC8 /* ContentView.swift in Sources */,
 				B223B33E2A13B6F100708DC8 /* imdb_projectApp.swift in Sources */,
 				B223B3502A13C44A00708DC8 /* MovieService.swift in Sources */,
+				B223B3572A13EBAE00708DC8 /* Movie+Stub.swift in Sources */,
 				B223B34D2A13C3B300708DC8 /* Movie.swift in Sources */,
 				B223B3522A13C73F00708DC8 /* MovieStore.swift in Sources */,
 				B223B3542A13CF0500708DC8 /* Utils.swift in Sources */,
