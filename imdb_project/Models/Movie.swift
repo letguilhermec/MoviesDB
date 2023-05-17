@@ -83,7 +83,7 @@ struct Movie: Decodable, Identifiable {
     return Movie.durationFormatter.string(from: TimeInterval(runtime) * 60) ?? "n/a"
   }
   
-  var casts: [MovieCast]? {
+  var cast: [MovieCast]? {
     credits?.cast
   }
   
@@ -115,13 +115,13 @@ struct MovieCredits: Decodable {
   let crew: [MovieCrew]
 }
 
-struct MovieCast: Decodable {
+struct MovieCast: Decodable, Identifiable {
   let id: Int
   let character: String
   let name: String
 }
 
-struct MovieCrew: Decodable {
+struct MovieCrew: Decodable, Identifiable {
   let id: Int
   let job: String
   let name: String
