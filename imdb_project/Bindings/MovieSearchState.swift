@@ -30,7 +30,7 @@ class MovieSearchState: ObservableObject {
         self?.error = nil
         return text
       }
-      .throttle(for: 1, scheduler: DispatchQueue.main, latest: true)
+      .throttle(for: 5, scheduler: DispatchQueue.main, latest: true)
       .sink { [weak self] in self?.search(query: $0)}
   }
   
