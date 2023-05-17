@@ -30,6 +30,10 @@
 		B223B3732A13FB3800708DC8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3722A13FB3800708DC8 /* LoadingView.swift */; };
 		B223B3752A14072500708DC8 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3742A14072500708DC8 /* MovieDetailView.swift */; };
 		B223B3772A14075400708DC8 /* MovieDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3762A14075400708DC8 /* MovieDetailState.swift */; };
+		B223B3792A1543BA00708DC8 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3782A1543BA00708DC8 /* SafariView.swift */; };
+		B223B37B2A1547E500708DC8 /* MovieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37A2A1547E500708DC8 /* MovieSearchView.swift */; };
+		B223B37D2A15482200708DC8 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37C2A15482200708DC8 /* SearchBarView.swift */; };
+		B223B37F2A15498F00708DC8 /* MovieSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37E2A15498F00708DC8 /* MovieSearchState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +61,10 @@
 		B223B3722A13FB3800708DC8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B223B3742A14072500708DC8 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		B223B3762A14075400708DC8 /* MovieDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailState.swift; sourceTree = "<group>"; };
+		B223B3782A1543BA00708DC8 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
+		B223B37A2A1547E500708DC8 /* MovieSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchView.swift; sourceTree = "<group>"; };
+		B223B37C2A15482200708DC8 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		B223B37E2A15498F00708DC8 /* MovieSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,7 @@
 				B223B36B2A13F7C400708DC8 /* MovieListView.swift */,
 				B223B3722A13FB3800708DC8 /* LoadingView.swift */,
 				B223B3742A14072500708DC8 /* MovieDetailView.swift */,
+				B223B37A2A1547E500708DC8 /* MovieSearchView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -160,6 +169,7 @@
 				B223B3632A13EE7700708DC8 /* ImageLoader.swift */,
 				B223B36D2A13F7E600708DC8 /* MovieListState.swift */,
 				B223B3762A14075400708DC8 /* MovieDetailState.swift */,
+				B223B37E2A15498F00708DC8 /* MovieSearchState.swift */,
 			);
 			path = Bindings;
 			sourceTree = "<group>";
@@ -168,6 +178,8 @@
 			isa = PBXGroup;
 			children = (
 				B223B3702A13FAA900708DC8 /* ActivityIndicatorView.swift */,
+				B223B3782A1543BA00708DC8 /* SafariView.swift */,
+				B223B37C2A15482200708DC8 /* SearchBarView.swift */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -249,14 +261,18 @@
 				B223B33E2A13B6F100708DC8 /* imdb_projectApp.swift in Sources */,
 				B223B3612A13EE1000708DC8 /* MovieBackdropCard.swift in Sources */,
 				B223B3772A14075400708DC8 /* MovieDetailState.swift in Sources */,
+				B223B37F2A15498F00708DC8 /* MovieSearchState.swift in Sources */,
 				B223B3502A13C44A00708DC8 /* MovieService.swift in Sources */,
+				B223B37B2A1547E500708DC8 /* MovieSearchView.swift in Sources */,
 				B223B3682A13F3DF00708DC8 /* MoviePosterCard.swift in Sources */,
 				B223B3732A13FB3800708DC8 /* LoadingView.swift in Sources */,
 				B223B3572A13EBAE00708DC8 /* Movie+Stub.swift in Sources */,
 				B223B3712A13FAA900708DC8 /* ActivityIndicatorView.swift in Sources */,
+				B223B37D2A15482200708DC8 /* SearchBarView.swift in Sources */,
 				B223B36E2A13F7E600708DC8 /* MovieListState.swift in Sources */,
 				B223B36A2A13F67000708DC8 /* MoviePosterCarouselView.swift in Sources */,
 				B223B3642A13EE7700708DC8 /* ImageLoader.swift in Sources */,
+				B223B3792A1543BA00708DC8 /* SafariView.swift in Sources */,
 				B223B34D2A13C3B300708DC8 /* Movie.swift in Sources */,
 				B223B3662A13F21200708DC8 /* MovieBackdropCarouselView.swift in Sources */,
 				B223B36C2A13F7C400708DC8 /* MovieListView.swift in Sources */,
