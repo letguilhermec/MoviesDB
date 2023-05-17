@@ -34,7 +34,30 @@ struct MovieDetailListView: View {
     List {
       MovieDetailImage(imageURL: self.movie.backdropURL)
         .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
+      
+      HStack {
+        Text(movie.genreText)
+        Text("·")
+        Text(movie.yearText)
+        Text(movie.durationText)
+      }
+        .listRowSeparator(.hidden)
+      
+      Text(movie.overview)
+        .listRowSeparator(.hidden)
+      
+      
+      HStack {
+        if !movie.ratingText.isEmpty {
+          Text(movie.ratingText).foregroundColor(.yellow)
+        }
+        Text(movie.scoreText)
+      }
+        .listRowSeparator(.hidden)
+      Divider()
+        .listRowSeparator(.hidden)
     }
+    .listStyle(.plain)
   }
 }
 
