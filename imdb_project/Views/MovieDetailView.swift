@@ -110,6 +110,25 @@ struct MovieDetailListView: View {
       Divider()
       .listRowSeparator(.hidden)
       
+      if movie.youtubeTrailers != nil &&
+          movie.youtubeTrailers!.count > 0 {
+        Text("Trailers")
+          .font(.headline)
+        ForEach(self.movie.youtubeTrailers!) { trailer in
+          Button(action: {
+            
+          }) {
+            HStack {
+              Text(trailer.name)
+              Spacer()
+              Image(systemName: "play.circle.fill")
+                .foregroundColor(Color(UIColor.systemBlue))
+            }
+          }
+        }
+      }
+    
+      
     }
     .listStyle(.plain)
   }
