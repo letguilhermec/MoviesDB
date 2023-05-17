@@ -29,6 +29,7 @@ struct MovieDetailView: View {
 
 struct MovieDetailListView: View {
   let movie: Movie
+  @State private var selectedTrailer: MovieVideo?
   
   var body: some View {
     List {
@@ -114,9 +115,10 @@ struct MovieDetailListView: View {
           movie.youtubeTrailers!.count > 0 {
         Text("Trailers")
           .font(.headline)
+          .listRowSeparator(.hidden)
         ForEach(self.movie.youtubeTrailers!) { trailer in
           Button(action: {
-            
+            self.selectedTrailer = trailer
           }) {
             HStack {
               Text(trailer.name)
@@ -125,10 +127,12 @@ struct MovieDetailListView: View {
                 .foregroundColor(Color(UIColor.systemBlue))
             }
           }
+          .listRowSeparator(.hidden)
         }
       }
-    
-      
+    }
+    .sheet(item: self.$selectedTrailer) { trailer in
+      SafariView(url: trailer.youtubeURL!)
     }
     .listStyle(.plain)
   }

@@ -30,6 +30,7 @@
 		B223B3732A13FB3800708DC8 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3722A13FB3800708DC8 /* LoadingView.swift */; };
 		B223B3752A14072500708DC8 /* MovieDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3742A14072500708DC8 /* MovieDetailView.swift */; };
 		B223B3772A14075400708DC8 /* MovieDetailState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3762A14075400708DC8 /* MovieDetailState.swift */; };
+		B223B3792A1543BA00708DC8 /* SafariView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3782A1543BA00708DC8 /* SafariView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +58,7 @@
 		B223B3722A13FB3800708DC8 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		B223B3742A14072500708DC8 /* MovieDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailView.swift; sourceTree = "<group>"; };
 		B223B3762A14075400708DC8 /* MovieDetailState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailState.swift; sourceTree = "<group>"; };
+		B223B3782A1543BA00708DC8 /* SafariView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 			isa = PBXGroup;
 			children = (
 				B223B3702A13FAA900708DC8 /* ActivityIndicatorView.swift */,
+				B223B3782A1543BA00708DC8 /* SafariView.swift */,
 			);
 			path = "UIKit Views";
 			sourceTree = "<group>";
@@ -257,6 +260,7 @@
 				B223B36E2A13F7E600708DC8 /* MovieListState.swift in Sources */,
 				B223B36A2A13F67000708DC8 /* MoviePosterCarouselView.swift in Sources */,
 				B223B3642A13EE7700708DC8 /* ImageLoader.swift in Sources */,
+				B223B3792A1543BA00708DC8 /* SafariView.swift in Sources */,
 				B223B34D2A13C3B300708DC8 /* Movie.swift in Sources */,
 				B223B3662A13F21200708DC8 /* MovieBackdropCarouselView.swift in Sources */,
 				B223B36C2A13F7C400708DC8 /* MovieListView.swift in Sources */,
