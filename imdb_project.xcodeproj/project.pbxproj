@@ -36,6 +36,7 @@
 		B223B37F2A15498F00708DC8 /* MovieSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37E2A15498F00708DC8 /* MovieSearchState.swift */; };
 		B223B3822A1660BF00708DC8 /* AlanSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; };
 		B223B3832A1660BF00708DC8 /* AlanSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B223B3882A16656D00708DC8 /* Alan+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -83,6 +84,7 @@
 		B223B37E2A15498F00708DC8 /* MovieSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchState.swift; sourceTree = "<group>"; };
 		B223B3802A16609F00708DC8 /* AlanSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AlanSDK.xcframework; sourceTree = "<group>"; };
 		B223B3852A16619400708DC8 /* imdb-project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "imdb-project-Info.plist"; sourceTree = SOURCE_ROOT; };
+		B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alan+UIApplication.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,7 +102,7 @@
 		B223B3312A13B6F100708DC8 = {
 			isa = PBXGroup;
 			children = (
-				B223B3802A16609F00708DC8 /* AlanSDK.xcframework */,
+				B223B3862A16655600708DC8 /* Alan */,
 				B223B33C2A13B6F100708DC8 /* imdb_project */,
 				B223B33B2A13B6F100708DC8 /* Products */,
 			);
@@ -205,6 +207,15 @@
 			path = "UIKit Views";
 			sourceTree = "<group>";
 		};
+		B223B3862A16655600708DC8 /* Alan */ = {
+			isa = PBXGroup;
+			children = (
+				B223B3802A16609F00708DC8 /* AlanSDK.xcframework */,
+				B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */,
+			);
+			path = Alan;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -291,6 +302,7 @@
 				B223B3572A13EBAE00708DC8 /* Movie+Stub.swift in Sources */,
 				B223B3712A13FAA900708DC8 /* ActivityIndicatorView.swift in Sources */,
 				B223B37D2A15482200708DC8 /* SearchBarView.swift in Sources */,
+				B223B3882A16656D00708DC8 /* Alan+UIApplication.swift in Sources */,
 				B223B36E2A13F7E600708DC8 /* MovieListState.swift in Sources */,
 				B223B36A2A13F67000708DC8 /* MoviePosterCarouselView.swift in Sources */,
 				B223B3642A13EE7700708DC8 /* ImageLoader.swift in Sources */,
@@ -435,7 +447,6 @@
 				INFOPLIST_FILE = "imdb-project-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to your camera to enable testing Alan, the voice assistant.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to your microphone to enable its voice assistant.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -467,7 +478,6 @@
 				INFOPLIST_FILE = "imdb-project-Info.plist";
 				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to your camera to enable testing Alan, the voice assistant.";
 				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to your microphone to enable its voice assistant.";
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
