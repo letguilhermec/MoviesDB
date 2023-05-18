@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+  let alanManager = UIApplication.shared
+  
     var body: some View {
       TabView {
         MovieListView()
@@ -27,6 +29,9 @@ struct ContentView: View {
             }
           }
           .tag(1)
+      }
+      .onAppear {
+        alanManager.addAlan()
       }
     }
 }
