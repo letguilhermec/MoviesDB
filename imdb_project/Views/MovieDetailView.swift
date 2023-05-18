@@ -116,7 +116,7 @@ struct MovieDetailListView: View {
         Text("Trailers")
           .font(.headline)
           .listRowSeparator(.hidden)
-        ForEach(self.movie.youtubeTrailers!) { trailer in
+        ForEach(self.movie.youtubeTrailers!.prefix(5)) { trailer in
           Button(action: {
             self.selectedTrailer = trailer
           }) {
