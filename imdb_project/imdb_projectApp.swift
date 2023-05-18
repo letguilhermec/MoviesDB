@@ -12,9 +12,7 @@ import AlanSDK
 struct imdb_projectApp: App {
   var body: some Scene {
     WindowGroup {
-      ZStack {
         ContentView()
-      }
     }
   }
 }
