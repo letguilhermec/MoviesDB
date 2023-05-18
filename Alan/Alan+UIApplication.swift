@@ -112,8 +112,8 @@ extension UIApplication {
     // align button on view
     button.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(button)
-    let b = NSLayoutConstraint(item: button as Any, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -40)
-    let r = NSLayoutConstraint(item: button as Any, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20)
+    let b = NSLayoutConstraint(item: button as Any, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -100)
+    let r = NSLayoutConstraint(item: button as Any, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -10)
     let w = NSLayoutConstraint(item: button as Any, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64)
     let h = NSLayoutConstraint(item: button as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64)
     view.addConstraints([b, r, w, h])
@@ -139,8 +139,8 @@ extension UIApplication {
     // align text on view
     text.translatesAutoresizingMaskIntoConstraints = false
     view.addSubview(text)
-    let b = NSLayoutConstraint(item: text as Any, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -40)
-    let l = NSLayoutConstraint(item: text as Any, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 20)
+    let b = NSLayoutConstraint(item: text as Any, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: -100)
+    let l = NSLayoutConstraint(item: text as Any, attribute: .left, relatedBy: .equal, toItem: view, attribute: .left, multiplier: 1, constant: 10)
     let r = NSLayoutConstraint(item: text as Any, attribute: .right, relatedBy: .equal, toItem: view, attribute: .right, multiplier: 1, constant: -20)
     let h = NSLayoutConstraint(item: text as Any, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 64)
     view.addConstraints([b, r, l, h])
