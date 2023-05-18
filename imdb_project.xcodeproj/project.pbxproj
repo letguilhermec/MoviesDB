@@ -34,7 +34,23 @@
 		B223B37B2A1547E500708DC8 /* MovieSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37A2A1547E500708DC8 /* MovieSearchView.swift */; };
 		B223B37D2A15482200708DC8 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37C2A15482200708DC8 /* SearchBarView.swift */; };
 		B223B37F2A15498F00708DC8 /* MovieSearchState.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B37E2A15498F00708DC8 /* MovieSearchState.swift */; };
+		B223B3822A1660BF00708DC8 /* AlanSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; };
+		B223B3832A1660BF00708DC8 /* AlanSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B223B3842A1660BF00708DC8 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B223B3832A1660BF00708DC8 /* AlanSDK.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		B223B33A2A13B6F100708DC8 /* imdb_project.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = imdb_project.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +81,8 @@
 		B223B37A2A1547E500708DC8 /* MovieSearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchView.swift; sourceTree = "<group>"; };
 		B223B37C2A15482200708DC8 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		B223B37E2A15498F00708DC8 /* MovieSearchState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieSearchState.swift; sourceTree = "<group>"; };
+		B223B3802A16609F00708DC8 /* AlanSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AlanSDK.xcframework; sourceTree = "<group>"; };
+		B223B3852A16619400708DC8 /* imdb-project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "imdb-project-Info.plist"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,6 +90,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B223B3822A1660BF00708DC8 /* AlanSDK.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +100,7 @@
 		B223B3312A13B6F100708DC8 = {
 			isa = PBXGroup;
 			children = (
+				B223B3802A16609F00708DC8 /* AlanSDK.xcframework */,
 				B223B33C2A13B6F100708DC8 /* imdb_project */,
 				B223B33B2A13B6F100708DC8 /* Products */,
 			);
@@ -97,6 +117,7 @@
 		B223B33C2A13B6F100708DC8 /* imdb_project */ = {
 			isa = PBXGroup;
 			children = (
+				B223B3852A16619400708DC8 /* imdb-project-Info.plist */,
 				B223B3622A13EE6300708DC8 /* Bindings */,
 				B223B35F2A13EDF400708DC8 /* Views */,
 				B223B3582A13EBCC00708DC8 /* Resources */,
@@ -194,6 +215,7 @@
 				B223B3362A13B6F100708DC8 /* Sources */,
 				B223B3372A13B6F100708DC8 /* Frameworks */,
 				B223B3382A13B6F100708DC8 /* Resources */,
+				B223B3842A1660BF00708DC8 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -410,6 +432,9 @@
 				DEVELOPMENT_TEAM = N4L46RJZFA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "imdb-project-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to your camera to enable testing Alan, the voice assistant.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to your microphone to enable its voice assistant.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -439,6 +464,9 @@
 				DEVELOPMENT_TEAM = N4L46RJZFA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "imdb-project-Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "This app requires access to your camera to enable testing Alan, the voice assistant.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "This app requires access to your microphone to enable its voice assistant.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
