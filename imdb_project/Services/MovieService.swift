@@ -50,3 +50,7 @@ enum MovieError: Error, CustomNSError {
     [NSLocalizedDescriptionKey: localizedDescription]
   }
 }
+
+enum Screens: String {
+  case upcoming
+}

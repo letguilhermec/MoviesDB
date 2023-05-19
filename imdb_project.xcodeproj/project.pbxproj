@@ -37,6 +37,7 @@
 		B223B3822A1660BF00708DC8 /* AlanSDK.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; };
 		B223B3832A1660BF00708DC8 /* AlanSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B223B3882A16656D00708DC8 /* Alan+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */; };
+		B223B38E2A17C11000708DC8 /* VerticalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B38D2A17C11000708DC8 /* VerticalListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -85,6 +86,7 @@
 		B223B3802A16609F00708DC8 /* AlanSDK.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; path = AlanSDK.xcframework; sourceTree = "<group>"; };
 		B223B3852A16619400708DC8 /* imdb-project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "imdb-project-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alan+UIApplication.swift"; sourceTree = "<group>"; };
+		B223B38D2A17C11000708DC8 /* VerticalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				B223B3722A13FB3800708DC8 /* LoadingView.swift */,
 				B223B3742A14072500708DC8 /* MovieDetailView.swift */,
 				B223B37A2A1547E500708DC8 /* MovieSearchView.swift */,
+				B223B38D2A17C11000708DC8 /* VerticalListView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -292,6 +295,7 @@
 			files = (
 				B223B3402A13B6F100708DC8 /* ContentView.swift in Sources */,
 				B223B33E2A13B6F100708DC8 /* imdb_projectApp.swift in Sources */,
+				B223B38E2A17C11000708DC8 /* VerticalListView.swift in Sources */,
 				B223B3612A13EE1000708DC8 /* MovieBackdropCard.swift in Sources */,
 				B223B3772A14075400708DC8 /* MovieDetailState.swift in Sources */,
 				B223B37F2A15498F00708DC8 /* MovieSearchState.swift in Sources */,
