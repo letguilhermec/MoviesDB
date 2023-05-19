@@ -10,12 +10,11 @@ import SwiftUI
 struct MovieBackdropCarouselView: View {
   let title: String
   let movies: [Movie]
-  let type: MovieListEndpoint
   
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       
-      NavigationLink(destination: VerticalListView(title: title, type: type)) {
+      NavigationLink(destination: VerticalListView(title: title, movies: movies)) {
         Text(title)
           .font(.title)
           .fontWeight(.bold)
@@ -41,6 +40,6 @@ struct MovieBackdropCarouselView: View {
 
 struct MovieBackdropCarouselView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieBackdropCarouselView(title: "Upcoming", movies: Movie.stubbedMovies, type: .upcoming)
+    MovieBackdropCarouselView(title: "Upcoming", movies: Movie.stubbedMovies)
   }
 }

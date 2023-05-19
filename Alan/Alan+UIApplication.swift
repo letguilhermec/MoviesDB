@@ -30,7 +30,6 @@ extension UIApplication {
     set { UIApplication.associationAlanText[self] = newValue }
   }
   
-  
   // MARK: - Actions
   
   /// Add button
@@ -187,110 +186,113 @@ extension UIApplication {
     else {
       return
     }
-    
-    print("handleAlanEvent: \(userInfo)")
+
     
     if command == "printTest" {
-        DispatchQueue.main.async {
-          self.printTest()
-        }
+      DispatchQueue.main.async {
+        self.printTest()
       }
-//      else {
-//        DispatchQueue.main.async {
-//          self.showMenu()
-//        }
-//      }
-//    }
-//    else if command == "highlight" {
-//      guard let name = json["id"] as? String else {
-//        return
-//      }
-//      DispatchQueue.main.async {
-//        self.highlight(name: name)
-//      }
-//    }
-//    else if command == "addToCart" {
-//      guard let item = json["item"] as? String else {
-//        return
-//      }
-//      guard let quantity = json["quantity"] as? Int else {
-//        return
-//      }
-//
-//      DispatchQueue.main.async {
-//        self.addToCart(item.lowercased(), quantity: quantity)
-//      }
-//    }
-//    else if command == "removeFromCart" {
-//      guard let item = json["item"] as? String else {
-//        return
-//      }
-//      guard let quantity = json["quantity"] as? Int else {
-//        return
-//      }
-//      DispatchQueue.main.async {
-//        self.removeFromCart(item.lowercased(), quantity: quantity)
-//      }
-//    }
-//    else if command == "checkout" {
-//      DispatchQueue.main.async {
-//        self.checkoutOrder()
-//      }
-//    }
-//    else if command == "finishOrder" {
-//      DispatchQueue.main.async {
-//        self.finishOrder()
-//      }
-//    }
+    } else if command == "nowPlayingMovies" {
+      DispatchQueue.main.async {
+        print(json)
+      }
+    }
+    //      else {
+    //        DispatchQueue.main.async {
+    //          self.showMenu()
+    //        }
+    //      }
+    //    }
+    //    else if command == "highlight" {
+    //      guard let name = json["id"] as? String else {
+    //        return
+    //      }
+    //      DispatchQueue.main.async {
+    //        self.highlight(name: name)
+    //      }
+    //    }
+    //    else if command == "addToCart" {
+    //      guard let item = json["item"] as? String else {
+    //        return
+    //      }
+    //      guard let quantity = json["quantity"] as? Int else {
+    //        return
+    //      }
+    //
+    //      DispatchQueue.main.async {
+    //        self.addToCart(item.lowercased(), quantity: quantity)
+    //      }
+    //    }
+    //    else if command == "removeFromCart" {
+    //      guard let item = json["item"] as? String else {
+    //        return
+    //      }
+    //      guard let quantity = json["quantity"] as? Int else {
+    //        return
+    //      }
+    //      DispatchQueue.main.async {
+    //        self.removeFromCart(item.lowercased(), quantity: quantity)
+    //      }
+    //    }
+    //    else if command == "checkout" {
+    //      DispatchQueue.main.async {
+    //        self.checkoutOrder()
+    //      }
+    //    }
+    //    else if command == "finishOrder" {
+    //      DispatchQueue.main.async {
+    //        self.finishOrder()
+    //      }
+    //    }
   }
   
   
   // MARK: - Commands
   
   fileprivate func printTest() {
-   print("teste")
+    print("teste")
   }
   
-//  fileprivate func removeFromCart(_ name: String, quantity: Int) {
-//    if let item = findItem(name) {
-//      CheckoutManager.shared.addItem(item, quantity: quantity)
-//    }
-//  }
-//
-//  fileprivate func checkoutOrder() {
-//    guard let container = self.getRoot() as? ContainerViewController else {
-//      return
-//    }
-//    container.checkoutOrder()
-//  }
-//
-//  fileprivate func finishOrder() {
-//    guard let container = self.getRoot() as? ContainerViewController else {
-//      return
-//    }
-//    container.finishOrder()
-//  }
-//
-//  fileprivate func showMenu() {
-//    guard let container = self.getRoot() as? ContainerViewController else {
-//      return
-//    }
-//    container.showMenu()
-//  }
-//
-//  fileprivate func showCategory(_ name: String) {
-//    guard let container = self.getRoot() as? ContainerViewController else {
-//      return
-//    }
-//    container.showCategory(name)
-//  }
-//
-//  fileprivate func highlight(name: String) {
-//    guard let container = self.getRoot() as? ContainerViewController else {
-//      return
-//    }
-//    container.highlight(name: name)
-//  }
+  //  fileprivate func removeFromCart(_ name: String, quantity: Int) {
+  //    if let item = findItem(name) {
+  //      CheckoutManager.shared.addItem(item, quantity: quantity)
+  //    }
+  //  }
+  //
+  //  fileprivate func checkoutOrder() {
+  //    guard let container = self.getRoot() as? ContainerViewController else {
+  //      return
+  //    }
+  //    container.checkoutOrder()
+  //  }
+  //
+  //  fileprivate func finishOrder() {
+  //    guard let container = self.getRoot() as? ContainerViewController else {
+  //      return
+  //    }
+  //    container.finishOrder()
+  //  }
+  //
+  //  fileprivate func showMenu() {
+  //    guard let container = self.getRoot() as? ContainerViewController else {
+  //      return
+  //    }
+  //    container.showMenu()
+  //  }
+  //
+  //  fileprivate func showCategory(_ name: String) {
+  //    guard let container = self.getRoot() as? ContainerViewController else {
+  //      return
+  //    }
+  //    container.showCategory(name)
+  //  }
+  //
+  //  fileprivate func highlight(name: String) {
+  //    guard let container = self.getRoot() as? ContainerViewController else {
+  //      return
+  //    }
+  //    container.highlight(name: name)
+  //  }
 }
 
 
