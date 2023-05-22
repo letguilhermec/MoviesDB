@@ -11,11 +11,13 @@ class MovieListState: ObservableObject {
   @Published var movies: [Movie]?
   @Published var isLoading = false
   @Published var error: NSError?
+  @Published var isNowOpen: Bool
 
   private let movieService: MovieService
   
   init(movieService: MovieService = MovieStore.shared) {
     self.movieService = movieService
+    self.isNowOpen = movieService.getIsNowOpen()
   }
   
   func loadMovies(with endpoint: MovieListEndpoint) {
@@ -33,4 +35,9 @@ class MovieListState: ObservableObject {
       }
     }
   }
+  
+  func setIsNowOpen() {
+    movieService.setIsNowOpen()
+  }
+  
 }

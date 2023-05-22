@@ -38,6 +38,7 @@
 		B223B3832A1660BF00708DC8 /* AlanSDK.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B223B3802A16609F00708DC8 /* AlanSDK.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		B223B3882A16656D00708DC8 /* Alan+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */; };
 		B223B38E2A17C11000708DC8 /* VerticalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B38D2A17C11000708DC8 /* VerticalListView.swift */; };
+		B2A57FAE2A1BAF6A00311D58 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A57FAD2A1BAF6A00311D58 /* AppController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -87,6 +88,7 @@
 		B223B3852A16619400708DC8 /* imdb-project-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "imdb-project-Info.plist"; sourceTree = SOURCE_ROOT; };
 		B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alan+UIApplication.swift"; sourceTree = "<group>"; };
 		B223B38D2A17C11000708DC8 /* VerticalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListView.swift; sourceTree = "<group>"; };
+		B2A57FAD2A1BAF6A00311D58 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				B223B36D2A13F7E600708DC8 /* MovieListState.swift */,
 				B223B3762A14075400708DC8 /* MovieDetailState.swift */,
 				B223B37E2A15498F00708DC8 /* MovieSearchState.swift */,
+				B2A57FAD2A1BAF6A00311D58 /* AppController.swift */,
 			);
 			path = Bindings;
 			sourceTree = "<group>";
@@ -314,6 +317,7 @@
 				B223B34D2A13C3B300708DC8 /* Movie.swift in Sources */,
 				B223B3662A13F21200708DC8 /* MovieBackdropCarouselView.swift in Sources */,
 				B223B36C2A13F7C400708DC8 /* MovieListView.swift in Sources */,
+				B2A57FAE2A1BAF6A00311D58 /* AppController.swift in Sources */,
 				B223B3752A14072500708DC8 /* MovieDetailView.swift in Sources */,
 				B223B3522A13C73F00708DC8 /* MovieStore.swift in Sources */,
 				B223B3542A13CF0500708DC8 /* Utils.swift in Sources */,

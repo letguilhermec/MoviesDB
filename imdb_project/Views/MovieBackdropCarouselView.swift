@@ -12,14 +12,14 @@ struct MovieBackdropCarouselView: View {
   let movies: [Movie]
   
   var body: some View {
+    
+    
     VStack(alignment: .leading, spacing: 0) {
       
-      NavigationLink(destination: VerticalListView(title: title, movies: movies)) {
-        Text(title)
-          .font(.title)
-          .fontWeight(.bold)
+      Text(title)
+        .font(.title)
+        .fontWeight(.bold)
         .padding(.horizontal)
-      }
       
       ScrollView(.horizontal, showsIndicators: false) {
         HStack(alignment: .top, spacing: 16) {

@@ -10,11 +10,18 @@ import SwiftUI
 struct MoviePosterCarouselView: View {
   let title: String
   let movies: [Movie]
-  @ObservedObject var state: MovieListState
+  @StateObject private var appController = AppController.shared
+  
+  var isNowOpen: Binding<Bool> {
+    Binding<Bool>(
+      get: { self.appController.isNowOpen },
+      set: { self.appController.isNowOpen = $0 }
+    )
+  }
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      NavigationLink(destination: VerticalListView(title: title, movies: movies)) {
+      NavigationLink(destination: VerticalListView(title: title, movies: movies), isActive: isNowOpen) {
         Text(title)
           .font(.title)
           .fontWeight(.bold)
@@ -39,6 +46,6 @@ struct MoviePosterCarouselView: View {
 
 struct MoviePosterCarouselView_Previews: PreviewProvider {
   static var previews: some View {
-    MoviePosterCarouselView(title: "Now Playing", movies: Movie.stubbedMovies, state: MovieListState())
+    MoviePosterCarouselView(title: "Now Playing", movies: Movie.stubbedMovies)
   }
 }

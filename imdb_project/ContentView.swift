@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import AlanSDK
 
 struct ContentView: View {
   let alanManager = UIApplication.shared
