@@ -13,7 +13,7 @@ struct MovieResponse: Decodable {
 }
 
 
-struct Movie: Decodable, Identifiable {
+struct Movie: Decodable, Identifiable, Encodable {
   
   let id: Int
   let title: String
@@ -111,32 +111,32 @@ struct Movie: Decodable, Identifiable {
 }
 
 
-struct MovieGenre: Decodable {
+struct MovieGenre: Decodable, Encodable {
   let name: String
 }
 
-struct MovieCredits: Decodable {
+struct MovieCredits: Decodable, Encodable {
   let cast: [MovieCast]
   let crew: [MovieCrew]
 }
 
-struct MovieCast: Decodable, Identifiable {
+struct MovieCast: Decodable, Identifiable, Encodable {
   let id: Int
   let character: String
   let name: String
 }
 
-struct MovieCrew: Decodable, Identifiable {
+struct MovieCrew: Decodable, Identifiable, Encodable {
   let id: Int
   let job: String
   let name: String
 }
 
-struct MovieVideoResponse: Decodable {
+struct MovieVideoResponse: Decodable, Encodable {
   let results: [MovieVideo]
 }
 
-struct MovieVideo: Decodable, Identifiable {
+struct MovieVideo: Decodable, Identifiable, Encodable {
   let id: String
   let key: String
   let name: String

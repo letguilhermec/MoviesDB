@@ -187,63 +187,33 @@ extension UIApplication {
       return
     }
     
-    if command == "nowPlayingMovies" {
-      AppController.shared.isNowOpen = true
+    if command == "printTest" {
+      DispatchQueue.main.async {
+        self.printTest()
+      }
+    } else if command == "nilType" {
+      AppController.shared.selectedType = nil
+    } else if command == "nowPlayingMovies" {
+      AppController.shared.selectedType = "Now Playing"
     } else if command == "upcomingMovies" {
-      AppController.shared.isUpcomingOpen = true
+      AppController.shared.selectedType = "Upcoming"
     } else if command == "popularMovies" {
-      AppController.shared.isPopularOpen = true
+      AppController.shared.selectedType = "Popular"
     } else if command == "topRatedMovies" {
-      AppController.shared.isTopRatedOpen = true
+      AppController.shared.selectedType = "Top Rated"
+    } else if command == "highlight" {
+      AppController.shared.selectedIndice = json["data"] as? Int ?? 0
     }
 
-    
   }
   
   
   // MARK: - Commands
   
+  fileprivate func printTest() {
+    print("teste")
+  }
   
-  //  fileprivate func removeFromCart(_ name: String, quantity: Int) {
-  //    if let item = findItem(name) {
-  //      CheckoutManager.shared.addItem(item, quantity: quantity)
-  //    }
-  //  }
-  //
-  //  fileprivate func checkoutOrder() {
-  //    guard let container = self.getRoot() as? ContainerViewController else {
-  //      return
-  //    }
-  //    container.checkoutOrder()
-  //  }
-  //
-  //  fileprivate func finishOrder() {
-  //    guard let container = self.getRoot() as? ContainerViewController else {
-  //      return
-  //    }
-  //    container.finishOrder()
-  //  }
-  //
-  //  fileprivate func showMenu() {
-  //    guard let container = self.getRoot() as? ContainerViewController else {
-  //      return
-  //    }
-  //    container.showMenu()
-  //  }
-  //
-  //  fileprivate func showCategory(_ name: String) {
-  //    guard let container = self.getRoot() as? ContainerViewController else {
-  //      return
-  //    }
-  //    container.showCategory(name)
-  //  }
-  //
-  //  fileprivate func highlight(name: String) {
-  //    guard let container = self.getRoot() as? ContainerViewController else {
-  //      return
-  //    }
-  //    container.highlight(name: name)
-  //  }
 }
 
 

@@ -24,7 +24,6 @@ struct MoviePosterCard: View {
           .fill(Color.gray.opacity(0.3))
           .cornerRadius(8)
           .shadow(radius: 4)
-        
         Text(movie.title)
           .multilineTextAlignment(.center)
       }

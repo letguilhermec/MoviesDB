@@ -12,35 +12,38 @@ struct MoviePosterCarouselView: View {
   let movies: [Movie]
   @StateObject private var appController = AppController.shared
   
-  var isNowOpen: Binding<Bool> {
-    Binding<Bool>(
-      get: { self.appController.isNowOpen },
-      set: { self.appController.isNowOpen = $0 }
-    )
-  }
-  
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
-      NavigationLink(destination: VerticalListView(title: title, movies: movies), isActive: isNowOpen) {
-        Text(title)
-          .font(.title)
-          .fontWeight(.bold)
+      Text(title)
+        .font(.title)
+        .fontWeight(.bold)
         .padding(.horizontal)
-      }
-      
-      ScrollView(.horizontal, showsIndicators: false) {
-        HStack(alignment: .top, spacing: 16) {
-          ForEach(self.movies) { movie in
-            NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
-              MoviePosterCard(movie: movie)
+      ScrollViewReader { scrollViewProxy in
+        ScrollView(.horizontal, showsIndicators: false) {
+          HStack(alignment: .top, spacing: 16) {
+            ForEach(self.movies) { movie in
+              NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+                MoviePosterCard(movie: movie)
+                  .overlay {
+                    RoundedRectangle(cornerRadius: 8)
+                      .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 8)
+                  }
+                  .id(movie.id)
+              }
+                .buttonStyle(PlainButtonStyle())
+                .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
+                .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
+                .onChange(of: appController.selectedIndice) { selectedIndice in
+                  if appController.selectedType == "Now Playing" && selectedIndice == movie.id {
+                    scrollViewProxy.scrollTo(movie.id, anchor: .center)
+                  }
+                }
             }
-              .buttonStyle(PlainButtonStyle())
-              .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
-              .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
           }
         }
       }
     }
+    .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
   }
 }
 

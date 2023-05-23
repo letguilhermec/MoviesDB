@@ -15,6 +15,8 @@ class AppController: ObservableObject {
   var isPopularOpen: Bool = false
   var isTopRatedOpen: Bool = false
   var isSearchOpen: Bool = false
+  @Published var selectedIndice: Int = 508439
+  @Published var selectedType: String?
   
   private init() {}
 }
