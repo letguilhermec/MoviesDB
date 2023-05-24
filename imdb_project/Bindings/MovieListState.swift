@@ -11,6 +11,7 @@ class MovieListState: ObservableObject {
   @Published var movies: [Movie]?
   @Published var isLoading = false
   @Published var error: NSError?
+  @Published var results: MovieResponse?
 
   private let movieService: MovieService
   
@@ -28,9 +29,11 @@ class MovieListState: ObservableObject {
       switch result {
       case .success(let response):
         self.movies = response.results
+        self.results = response
       case .failure(let error):
         self.error = error as NSError
       }
     }
   }
+  
 }
