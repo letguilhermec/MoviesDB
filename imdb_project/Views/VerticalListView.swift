@@ -22,7 +22,7 @@ struct VerticalListView: View {
         VStack(alignment: .center, spacing: 16) {
           ForEach(self.movies) { movie in
             NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
-              MovieBackdropCard(movie: movie)
+              MovieBackdropCard(movie: movie, image: nil)
                 .padding(.horizontal)
             }
             .buttonStyle(PlainButtonStyle())

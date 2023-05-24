@@ -59,7 +59,7 @@ struct MoviePosterCarouselView: View {
       MoviePosterCard(movie: movie, image: image)
         .overlay {
           RoundedRectangle(cornerRadius: 8)
-            .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 8)
+            .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 4)
         }
         .id(movie.id)
     }

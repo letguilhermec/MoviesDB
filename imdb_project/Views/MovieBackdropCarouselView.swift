@@ -11,6 +11,8 @@ struct MovieBackdropCarouselView: View {
   let title: String
   let movies: [Movie]
   @StateObject private var appController = AppController.shared
+  @StateObject private var imageLoader = ImageLoader()
+  @State private var backdropImages: [Int: UIImage] = [:]
   let alanManager = UIApplication.shared
 
   var body: some View {
@@ -27,56 +29,76 @@ struct MovieBackdropCarouselView: View {
         ScrollView(.horizontal, showsIndicators: false) {
           HStack(alignment: .top, spacing: 16) {
             ForEach(self.movies) { movie in
-              NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
-                MovieBackdropCard(movie: movie)
-                  .frame(width: 272, height: 200)
-                  .overlay {
-                    RoundedRectangle(cornerRadius: 8)
-                      .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 8)
-                  }
-                  .id(movie.id)
-              }
-              .buttonStyle(PlainButtonStyle())
-              .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
-              .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
-              .onChange(of: appController.selectedIndice) { selectedIndice in
-                if appController.selectedType == title && selectedIndice == movie.id {
-                  scrollViewProxy.scrollTo(movie.id, anchor: .center)
-                }
-              }
+              createMovieBackdropCard(movie: movie, scrollViewProxy: scrollViewProxy)
+            }
+          }
+        }
+      }
+      .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
+      .onAppear {
+        loadBackdropImages()
+        
+        var alanTitle = ""
+        switch title {
+        case "Upcoming":
+          alanTitle = "upcoming"
+        case "Top Rated":
+          alanTitle = "topRated"
+        case "Popular":
+          alanTitle = "popular"
+        default:
+          return
+        }
+        
+        do {
+          let encoder = JSONEncoder()
+          encoder.outputFormatting = .prettyPrinted
+          
+          let encodedMovies = try encoder.encode(self.movies)
+          let jsonMovies = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
+          
+          alanManager.call(method: "script::setMovieList", params: [alanTitle: jsonMovies]) { (error, result) in }
+          
+        } catch {
+          print("ERRO: ", error)
+        }
+      }
+    }
+  }
+    
+    func createMovieBackdropCard(movie: Movie, scrollViewProxy: ScrollViewProxy) -> some View {
+      let image = backdropImages[movie.id]
+
+      return NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+        MovieBackdropCard(movie: movie, image: image)
+          .frame(width: 272, height: 200)
+          .overlay {
+            RoundedRectangle(cornerRadius: 8)
+              .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 4)
+          }
+          .id(movie.id)
+      }
+      .buttonStyle(PlainButtonStyle())
+      .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
+      .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
+      .onChange(of: appController.selectedIndice) { selectedIndice in
+        if appController.selectedType == title && selectedIndice == movie.id {
+          scrollViewProxy.scrollTo(movie.id, anchor: .center)
+        }
+      }
+    }
+    
+    func loadBackdropImages() {
+      for movie in movies {
+        imageLoader.loadImage(with: movie.backdropURL, movieID: movie.id) { image, movieID in
+          if let image = image {
+            DispatchQueue.main.async {
+              backdropImages[movieID] = image
             }
           }
         }
       }
     }
-    .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
-    .onAppear {
-      var alanTitle = ""
-      switch title {
-      case "Upcoming":
-        alanTitle = "upcoming"
-      case "Top Rated":
-        alanTitle = "topRated"
-      case "Popular":
-        alanTitle = "popular"
-      default:
-        return
-      }
-      
-      do {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        
-        let encodedMovies = try encoder.encode(self.movies)
-        let jsonMovies = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
-        
-        alanManager.call(method: "script::setMovieList", params: [alanTitle: jsonMovies]) { (error, result) in }
-        
-      } catch {
-        print("ERRO: ", error)
-      }
-    }
-  }
 }
 
 struct MovieBackdropCarouselView_Previews: PreviewProvider {
