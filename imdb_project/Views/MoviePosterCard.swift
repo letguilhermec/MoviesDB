@@ -9,12 +9,12 @@ import SwiftUI
 
 struct MoviePosterCard: View {
   let movie: Movie
-  @ObservedObject var imageLoader = ImageLoader()
+  let image: UIImage?
   
   var body: some View {
     ZStack {
-      if self.imageLoader.image != nil {
-        Image(uiImage: self.imageLoader.image!)
+      if let image = image {
+        Image(uiImage: image)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .cornerRadius(8)
@@ -29,14 +29,11 @@ struct MoviePosterCard: View {
       }
     }
     .frame(width: 204, height: 306)
-    .onAppear {
-      self.imageLoader.loadImage(with: self.movie.posterURL)
-    }
   }
 }
 
 struct MoviePosterCard_Previews: PreviewProvider {
   static var previews: some View {
-    MoviePosterCard(movie: Movie.stubbedMovie)
+    MoviePosterCard(movie: Movie.stubbedMovie, image: nil)
   }
 }

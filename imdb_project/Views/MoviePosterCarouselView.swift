@@ -11,6 +11,8 @@ struct MoviePosterCarouselView: View {
   let title: String
   let movies: [Movie]
   @StateObject private var appController = AppController.shared
+  @StateObject private var imageLoader = ImageLoader()
+  @State private var posterImages: [Int: UIImage] = [:]
   let alanManager = UIApplication.shared
   
   var body: some View {
@@ -23,22 +25,7 @@ struct MoviePosterCarouselView: View {
         ScrollView(.horizontal, showsIndicators: false) {
           HStack(alignment: .top, spacing: 16) {
             ForEach(self.movies) { movie in
-              NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
-                MoviePosterCard(movie: movie)
-                  .overlay {
-                    RoundedRectangle(cornerRadius: 8)
-                      .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 8)
-                  }
-                  .id(movie.id)
-              }
-                .buttonStyle(PlainButtonStyle())
-                .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
-                .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
-                .onChange(of: appController.selectedIndice) { selectedIndice in
-                  if appController.selectedType == "Now Playing" && selectedIndice == movie.id {
-                    scrollViewProxy.scrollTo(movie.id, anchor: .center)
-                  }
-                }
+              createMoviePosterCard(movie: movie, scrollViewProxy: scrollViewProxy)
             }
           }
         }
@@ -46,6 +33,8 @@ struct MoviePosterCarouselView: View {
     }
     .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
     .onAppear {
+      
+      loadPosterImages()
       
       do {
         let encoder = JSONEncoder()
@@ -60,6 +49,45 @@ struct MoviePosterCarouselView: View {
       }
     }
   }
+  
+  
+  @ViewBuilder
+  func createMoviePosterCard(movie: Movie, scrollViewProxy: ScrollViewProxy) -> some View {
+    let image = posterImages[movie.id]
+    
+    NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+      MoviePosterCard(movie: movie, image: image)
+        .overlay {
+          RoundedRectangle(cornerRadius: 8)
+            .stroke(appController.selectedIndice == movie.id ? Color.blue : Color.clear, lineWidth: 8)
+        }
+        .id(movie.id)
+    }
+    .buttonStyle(PlainButtonStyle())
+    .padding(.leading, movie.id == self.movies.first!.id ? 16 : 0)
+    .padding(.trailing, movie.id == self.movies.last!.id ? 16 : 0)
+    .onChange(of: appController.selectedIndice) { selectedIndice in
+      if appController.selectedType == "Now Playing" && selectedIndice == movie.id {
+        scrollViewProxy.scrollTo(movie.id, anchor: .center)
+      }
+    }
+  }
+  
+  func loadPosterImages() {
+    for movie in movies {
+      imageLoader.loadImage(with: movie.posterURL, movieID: movie.id) { image, movieID in
+        if let image = image {
+          DispatchQueue.main.async {
+            posterImages[movieID] = image
+          }
+        }
+      }
+    }
+  }
+  
+  
+  
+  
 }
 
 struct MoviePosterCarouselView_Previews: PreviewProvider {
