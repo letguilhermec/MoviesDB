@@ -11,8 +11,6 @@ protocol MovieService {
   func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
   func fetchMovie(id: Int, completion: @escaping (Result<Movie, MovieError>) -> ())
   func searchMovie(query: String, completion: @escaping (Result<MovieResponse, MovieError>) -> ())
-  func getIsNowOpen() -> Bool
-  func setIsNowOpen() -> Void
 }
 
 enum MovieListEndpoint: String, CaseIterable {

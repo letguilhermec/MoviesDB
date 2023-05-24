@@ -11,6 +11,7 @@ struct MoviePosterCarouselView: View {
   let title: String
   let movies: [Movie]
   @StateObject private var appController = AppController.shared
+  let alanManager = UIApplication.shared
   
   var body: some View {
     VStack(alignment: .leading, spacing: 16) {
@@ -44,6 +45,20 @@ struct MoviePosterCarouselView: View {
       }
     }
     .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
+    .onAppear {
+      
+      do {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        let encodedMovies = try encoder.encode(self.movies)
+        let nowPlayingJsonObject = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
+        
+        alanManager.call(method: "script::setMovieList", params: ["nowPlaying": nowPlayingJsonObject]) { (error, result) in }
+        
+      } catch {
+        print("ERRO: ", error)
+      }
+    }
   }
 }
 

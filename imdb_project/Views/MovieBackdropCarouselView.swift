@@ -11,6 +11,7 @@ struct MovieBackdropCarouselView: View {
   let title: String
   let movies: [Movie]
   @StateObject private var appController = AppController.shared
+  let alanManager = UIApplication.shared
 
   var body: some View {
     
@@ -49,6 +50,32 @@ struct MovieBackdropCarouselView: View {
       }
     }
     .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
+    .onAppear {
+      var alanTitle = ""
+      switch title {
+      case "Upcoming":
+        alanTitle = "upcoming"
+      case "Top Rated":
+        alanTitle = "topRated"
+      case "Popular":
+        alanTitle = "popular"
+      default:
+        return
+      }
+      
+      do {
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        
+        let encodedMovies = try encoder.encode(self.movies)
+        let jsonMovies = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
+        
+        alanManager.call(method: "script::setMovieList", params: [alanTitle: jsonMovies]) { (error, result) in }
+        
+      } catch {
+        print("ERRO: ", error)
+      }
+    }
   }
 }
 

@@ -12,23 +12,11 @@ class MovieStore: MovieService {
   static let shared = MovieStore()
   private init() { }
   
-  var isNowOpen = false
-  
-  
-  
   // API Key from TMDB
   private let apiKey = "898cc78fa6bc8bfc8751f9665284d307"
   private let baseApiURL = "https://api.themoviedb.org/3"
   private let urlSession = URLSession.shared
   private let jsonDecoder = Utils.jsonDecoder
-  
-  func setIsNowOpen() {
-    isNowOpen = true
-  }
-  
-  func getIsNowOpen() -> Bool {
-    return isNowOpen
-  }
   
   func fetchMovies(from endpoint: MovieListEndpoint, completion: @escaping (Result<MovieResponse, MovieError>) -> ()) {
     guard let url = URL(string: "\(baseApiURL)/movie/\(endpoint.rawValue)") else {
@@ -82,6 +70,7 @@ class MovieStore: MovieService {
     
     urlSession.dataTask(with: finalURL) { [weak self] (data, response, error) in
       guard let self = self else { return }
+      
       if error != nil {
         self.executeCompletionHandlerInMainThread(with: .failure(.apiError), completion: completion)
         return

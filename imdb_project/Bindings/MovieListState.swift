@@ -11,13 +11,12 @@ class MovieListState: ObservableObject {
   @Published var movies: [Movie]?
   @Published var isLoading = false
   @Published var error: NSError?
-  @Published var isNowOpen: Bool
+  @Published var results: MovieResponse?
 
   private let movieService: MovieService
   
   init(movieService: MovieService = MovieStore.shared) {
     self.movieService = movieService
-    self.isNowOpen = movieService.getIsNowOpen()
   }
   
   func loadMovies(with endpoint: MovieListEndpoint) {
@@ -30,14 +29,11 @@ class MovieListState: ObservableObject {
       switch result {
       case .success(let response):
         self.movies = response.results
+        self.results = response
       case .failure(let error):
         self.error = error as NSError
       }
     }
-  }
-  
-  func setIsNowOpen() {
-    movieService.setIsNowOpen()
   }
   
 }

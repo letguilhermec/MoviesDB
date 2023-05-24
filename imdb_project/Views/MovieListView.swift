@@ -44,6 +44,9 @@ struct MovieListView: View {
           }
           .id("Upcoming")
           .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
+          .onAppear {
+            print("teste")
+          }
           
           Group {
             if topRatedState.movies != nil {
@@ -79,38 +82,15 @@ struct MovieListView: View {
       }
     }
     .onAppear {
-//      self.nowPlayingState.loadMovies(with: .nowPlaying)
-//      self.upcomingState.loadMovies(with: .upcoming)
-//      self.topRatedState.loadMovies(with: .topRated)
-//      self.popularState.loadMovies(with: .popular)
-      self.nowPlayingState.movies = Movie.stubbedMovies
-      self.upcomingState.movies = Movie.stubbedMovies
-      self.topRatedState.movies = Movie.stubbedMovies
-      self.popularState.movies = Movie.stubbedMovies
-      
-      do {
-        let encoder = JSONEncoder()
-        encoder.outputFormatting = .prettyPrinted
-        let nowPlayingJsonData = try encoder.encode(nowPlayingState.movies)
-        let nowPlayingJsonObject = try JSONSerialization.jsonObject(with: nowPlayingJsonData, options: [])
-
-        let upcomingJsonData = try encoder.encode(upcomingState.movies)
-        let upcomingJsonObject = try JSONSerialization.jsonObject(with: upcomingJsonData, options: [])
-        
-        let topRatedJsonData = try encoder.encode(upcomingState.movies)
-        let topRatedJsonObject = try JSONSerialization.jsonObject(with: upcomingJsonData, options: [])
-        
-        let popularJsonData = try encoder.encode(upcomingState.movies)
-        let popularJsonObject = try JSONSerialization.jsonObject(with: upcomingJsonData, options: [])
-        
-        self.alanManager.sendVisual(["nowPlaying": nowPlayingJsonObject,
-                                     "upcoming": upcomingJsonObject,
-                                     "topRated": topRatedJsonObject,
-                                     "popular": popularJsonObject])
-      } catch {
-        self.alanManager.sendVisual(["erro": ["Erro ao recuperar dados"]])
-      }
-      
+      self.nowPlayingState.loadMovies(with: .nowPlaying)
+      self.upcomingState.loadMovies(with: .upcoming)
+      self.topRatedState.loadMovies(with: .topRated)
+      self.popularState.loadMovies(with: .popular)
+//      self.nowPlayingState.movies = Movie.stubbedMovies
+//      self.upcomingState.movies = Movie.stubbedMovies
+//      self.topRatedState.movies = Movie.stubbedMovies
+//      self.popularState.movies = Movie.stubbedMovies
+          
     }
   }
 }
