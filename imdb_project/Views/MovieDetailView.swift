@@ -21,7 +21,7 @@ struct MovieDetailView: View {
       if movieDetailState.movie != nil {
         MovieDetailListView(movie: self.movieDetailState.movie!, posterImages: $posterImages)
           .onAppear {
-            imageLoader.loadImage(with: self.movieDetailState.movie!.posterURL, movieID: self.movieDetailState.movie!.id) { image, movieID in
+            imageLoader.loadImage(with: self.movieDetailState.movie!.backdropURL, movieID: self.movieDetailState.movie!.id) { image, movieID in
               if let image = image {
                 DispatchQueue.main.async {
                   posterImages[movieID] = image
