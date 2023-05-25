@@ -14,7 +14,12 @@ struct MovieListView: View {
   @ObservedObject private var topRatedState = MovieListState()
   @ObservedObject private var popularState = MovieListState()
   @EnvironmentObject private var appController: AppController
+  @Binding var isSearching: Bool
   let alanManager = UIApplication.shared
+  
+//  init(appController: AppController) {
+//    self.appController = appController
+//  }
   
   var isShown: Binding<Bool> {
     Binding<Bool>(
@@ -95,6 +100,9 @@ struct MovieListView: View {
 //      self.popularState.movies = Movie.stubbedMovies
           
     }
+    .onChange(of: appController.isSearching) { value in
+      isSearching = value
+    }
     .sheet(isPresented: isShown) {
       if let movieId = appController.showingMovieId {
         MovieDetailView(movieId: movieId)
@@ -105,7 +113,7 @@ struct MovieListView: View {
 
 struct MovieListView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieListView()
+    MovieListView(isSearching: .constant(false))
       .environmentObject(AppController.shared)
   }
 }

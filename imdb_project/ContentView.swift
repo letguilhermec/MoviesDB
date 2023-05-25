@@ -10,11 +10,11 @@ import AlanSDK
 
 struct ContentView: View {
   let alanManager = UIApplication.shared
-  @EnvironmentObject private var appController: AppController
+  @State private var isSearching = false
   
     var body: some View {
-      TabView(selection: $appController.isSearching) {
-        MovieListView()
+      TabView(selection: $isSearching) {
+        MovieListView(isSearching: $isSearching)
           .tabItem {
             VStack {
               Image(systemName: "tv")

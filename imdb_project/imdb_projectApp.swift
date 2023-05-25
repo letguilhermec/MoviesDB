@@ -12,9 +12,16 @@ import AlanSDK
 struct imdb_projectApp: App {
   @StateObject private var appController = AppController.shared
   
+  var isSearching: Binding<Bool> {
+    Binding<Bool>(
+      get: { appController.isSearching },
+      set: { appController.isSearching = $0 }
+    )
+  }
+  
   var body: some Scene {
     WindowGroup {
-        ContentView()
+      ContentView()
         .environmentObject(appController)
     }
   }
