@@ -10,7 +10,6 @@ import SwiftUI
 struct MovieDetailView: View {
   let movieId: Int
   @ObservedObject private var movieDetailState = MovieDetailState()
-  let alanManager = UIApplication.shared
   
   var body: some View {
     ZStack {
@@ -25,16 +24,7 @@ struct MovieDetailView: View {
     .onAppear {
       self.movieDetailState.loadMovie(id: self.movieId)
       
-      let encoder = JSONEncoder()
-      encoder.outputFormatting = .prettyPrinted
-      do {
-        let encodedMovie = try encoder.encode(self.movieDetailState.movie)
-        let jsonObject = try JSONSerialization.jsonObject(with: encodedMovie, options: [])
-        
-        alanManager.call(method: "script::setMovie", params: ["movie": jsonObject]) { (error, result) in }
-      } catch {
-        print("ERRO: ", error)
-      }
+      
     }
   }
 }
@@ -42,6 +32,7 @@ struct MovieDetailView: View {
 struct MovieDetailListView: View {
   let movie: Movie
   @State private var selectedTrailer: MovieVideo?
+  let alanManager = UIApplication.shared
   
   var body: some View {
     List {
@@ -141,6 +132,18 @@ struct MovieDetailListView: View {
           }
           .listRowSeparator(.hidden)
         }
+      }
+    }
+    .onAppear {
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      do {
+        let encodedMovie = try encoder.encode(self.movie)
+        let jsonObject = try JSONSerialization.jsonObject(with: encodedMovie, options: [])
+        
+        alanManager.call(method: "script::setMovie", params: ["movie": jsonObject]) { (error, result) in }
+      } catch {
+        print("ERRO: ", error)
       }
     }
     .sheet(item: self.$selectedTrailer) { trailer in
