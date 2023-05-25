@@ -10,6 +10,8 @@ import SwiftUI
 struct MovieDetailView: View {
   let movieId: Int
   @ObservedObject private var movieDetailState = MovieDetailState()
+  @StateObject private var imageLoader = ImageLoader()
+  @State private var posterImages: [Int: UIImage] = [:]
   
   var body: some View {
     ZStack {
@@ -17,13 +19,21 @@ struct MovieDetailView: View {
         self.movieDetailState.loadMovie(id: self.movieId)
       }
       if movieDetailState.movie != nil {
-        MovieDetailListView(movie: self.movieDetailState.movie!)
+        MovieDetailListView(movie: self.movieDetailState.movie!, posterImages: $posterImages)
+          .onAppear {
+            imageLoader.loadImage(with: self.movieDetailState.movie!.posterURL, movieID: self.movieDetailState.movie!.id) { image, movieID in
+              if let image = image {
+                DispatchQueue.main.async {
+                  posterImages[movieID] = image
+                }
+              }
+            }
+          }
       }
     }
     .navigationBarTitle(movieDetailState.movie?.title ?? "")
     .onAppear {
       self.movieDetailState.loadMovie(id: self.movieId)
-      
       
     }
   }
@@ -32,13 +42,14 @@ struct MovieDetailView: View {
 struct MovieDetailListView: View {
   let movie: Movie
   @State private var selectedTrailer: MovieVideo?
+  @Binding var posterImages: [Int: UIImage]
   @Environment(\.dismiss) private var dismiss
   let alanManager = UIApplication.shared
   
   var body: some View {
     ZStack(alignment: .topTrailing) {
       List {
-        MovieDetailImage(imageURL: self.movie.backdropURL)
+        MovieDetailImage(image: posterImages[movie.id])
           .listRowInsets(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
         
         HStack {
@@ -165,28 +176,24 @@ struct MovieDetailListView: View {
       .sheet(item: self.$selectedTrailer) { trailer in
         SafariView(url: trailer.youtubeURL!)
       }
-    .listStyle(.plain)
+      .listStyle(.plain)
     }
   
 }
 
 struct MovieDetailImage: View {
-  @ObservedObject private var imageLoader = ImageLoader()
-  let imageURL: URL
+  let image: UIImage?
   
   var body: some View {
     ZStack {
       Rectangle()
         .fill(Color.gray.opacity(0.3))
-      if self.imageLoader.image != nil {
-        Image(uiImage: self.imageLoader.image!)
+      if let image = image {
+        Image(uiImage: image)
           .resizable()
       }
     }
     .aspectRatio(16/9, contentMode: .fit)
-    .onAppear {
-      self.imageLoader.loadImage(with: self.imageURL)
-    }
   }
 }
 
