@@ -10,17 +10,18 @@ import AlanSDK
 
 struct ContentView: View {
   let alanManager = UIApplication.shared
+  @State private var isSearching = false
   
     var body: some View {
-      TabView {
-        MovieListView()
+      TabView(selection: $isSearching) {
+        MovieListView(isSearching: $isSearching)
           .tabItem {
             VStack {
               Image(systemName: "tv")
               Text("Movies")
             }
           }
-          .tag(0)
+          .tag(false)
         
         MovieSearchView()
           .tabItem {
@@ -29,7 +30,7 @@ struct ContentView: View {
               Text("Search")
             }
           }
-          .tag(1)
+          .tag(true)
       }
       .onAppear {
         alanManager.addAlan()
@@ -39,6 +40,7 @@ struct ContentView: View {
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+      ContentView()
+        .environmentObject(AppController.shared)
     }
 }

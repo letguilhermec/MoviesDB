@@ -9,6 +9,15 @@ import SwiftUI
 
 struct MovieSearchView: View {
   @ObservedObject var movieSearchState = MovieSearchState()
+  @EnvironmentObject private var appController: AppController
+  let alanManager = UIApplication.shared
+  
+  var isShown: Binding<Bool> {
+    Binding<Bool>(
+      get: { appController.isShowingMovieDetails },
+      set: { appController.isShowingMovieDetails = $0 }
+    )
+  }
   
   var body: some View {
     NavigationView {
@@ -23,17 +32,46 @@ struct MovieSearchView: View {
         
         if self.movieSearchState.movies != nil {
           ForEach(self.movieSearchState.movies!) { movie in
-            NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+            Button {
+              appController.showingMovieId = movie.id
+              appController.isShowingMovieDetails = true
+            } label: {
               VStack(alignment: .leading) {
                 Text(movie.title)
                 Text(movie.yearText)
               }
             }
           }
+          .onAppear {
+            do {
+              let encoder = JSONEncoder()
+              encoder.outputFormatting = .prettyPrinted
+              let encodedMovies = try encoder.encode(self.movieSearchState.movies!)
+              let jsonObject = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
+              
+              alanManager.call(method: "script::setMovieList", params: ["searchList": jsonObject]) { (error, result) in }
+              
+            } catch {
+              print("ERRO: ", error)
+            }
+          }
         }
       }
       .onAppear {
         self.movieSearchState.startObserve()
+        if let query = appController.searchQuery {
+          self.movieSearchState.query = query
+        }
+      }
+      .sheet(isPresented: isShown) {
+        if let movieId = appController.showingMovieId {
+          MovieDetailView(movieId: movieId)
+        }
+      }
+      .onChange(of: appController.searchQuery) { value in
+        if let query = value {
+          self.movieSearchState.query = query
+        }
       }
       .listStyle(.plain)
       .navigationBarTitle("Search")
@@ -44,5 +82,6 @@ struct MovieSearchView: View {
 struct MovieSearchView_Previews: PreviewProvider {
   static var previews: some View {
     MovieSearchView()
+      .environmentObject(AppController.shared)
   }
 }

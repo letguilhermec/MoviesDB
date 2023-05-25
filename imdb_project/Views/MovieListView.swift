@@ -13,9 +13,20 @@ struct MovieListView: View {
   @ObservedObject private var upcomingState = MovieListState()
   @ObservedObject private var topRatedState = MovieListState()
   @ObservedObject private var popularState = MovieListState()
+  @EnvironmentObject private var appController: AppController
+  @Binding var isSearching: Bool
   let alanManager = UIApplication.shared
   
-  @StateObject private var appController = AppController.shared
+//  init(appController: AppController) {
+//    self.appController = appController
+//  }
+  
+  var isShown: Binding<Bool> {
+    Binding<Bool>(
+      get: { appController.isShowingMovieDetails },
+      set: { appController.isShowingMovieDetails = $0 }
+    )
+  }
   
   var body: some View {
     NavigationView {
@@ -23,7 +34,7 @@ struct MovieListView: View {
         ScrollView(.vertical, showsIndicators: false) {
           Group {
             if nowPlayingState.movies != nil {
-              MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!)
+              MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.nowPlayingState.isLoading, error: self.nowPlayingState.error) {
                 self.nowPlayingState.loadMovies(with: .nowPlaying)
@@ -35,7 +46,7 @@ struct MovieListView: View {
           
           Group {
             if upcomingState.movies != nil {
-              MovieBackdropCarouselView(title: "Upcoming", movies: upcomingState.movies!)
+              MovieBackdropCarouselView(title: "Upcoming", movies: upcomingState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.upcomingState.isLoading, error: self.upcomingState.error) {
                 self.upcomingState.loadMovies(with: .upcoming)
@@ -44,13 +55,10 @@ struct MovieListView: View {
           }
           .id("Upcoming")
           .listRowInsets(EdgeInsets(top: 8, leading: 0, bottom: 8, trailing: 0))
-          .onAppear {
-            print("teste")
-          }
           
           Group {
             if topRatedState.movies != nil {
-              MovieBackdropCarouselView(title: "Top Rated", movies: topRatedState.movies!)
+              MovieBackdropCarouselView(title: "Top Rated", movies: topRatedState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.topRatedState.isLoading, error: self.topRatedState.error) {
                 self.topRatedState.loadMovies(with: .topRated)
@@ -62,7 +70,7 @@ struct MovieListView: View {
           
           Group {
             if popularState.movies != nil {
-              MovieBackdropCarouselView(title: "Popular", movies: popularState.movies!)
+              MovieBackdropCarouselView(title: "Popular", movies: popularState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.popularState.isLoading, error: self.popularState.error) {
                 self.popularState.loadMovies(with: .popular)
@@ -92,11 +100,20 @@ struct MovieListView: View {
 //      self.popularState.movies = Movie.stubbedMovies
           
     }
+    .onChange(of: appController.isSearching) { value in
+      isSearching = value
+    }
+    .sheet(isPresented: isShown) {
+      if let movieId = appController.showingMovieId {
+        MovieDetailView(movieId: movieId)
+      }
+    }
   }
 }
 
 struct MovieListView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieListView()
+    MovieListView(isSearching: .constant(false))
+      .environmentObject(AppController.shared)
   }
 }
