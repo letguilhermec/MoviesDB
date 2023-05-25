@@ -31,6 +31,7 @@ struct MoviePosterCarouselView: View {
         }
       }
     }
+    .padding(.vertical)
     .background(appController.selectedType == title ? Color.accentColor.opacity(0.15) : Color.clear)
     .onAppear {
       

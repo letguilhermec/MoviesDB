@@ -10,9 +10,12 @@ import AlanSDK
 
 @main
 struct imdb_projectApp: App {
+  @StateObject private var appController = AppController.shared
+  
   var body: some Scene {
     WindowGroup {
         ContentView()
+        .environmentObject(appController)
     }
   }
 }

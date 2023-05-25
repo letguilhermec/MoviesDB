@@ -10,6 +10,7 @@ import SwiftUI
 struct MovieDetailView: View {
   let movieId: Int
   @ObservedObject private var movieDetailState = MovieDetailState()
+  let alanManager = UIApplication.shared
   
   var body: some View {
     ZStack {
@@ -23,6 +24,17 @@ struct MovieDetailView: View {
     .navigationBarTitle(movieDetailState.movie?.title ?? "")
     .onAppear {
       self.movieDetailState.loadMovie(id: self.movieId)
+      
+      let encoder = JSONEncoder()
+      encoder.outputFormatting = .prettyPrinted
+      do {
+        let encodedMovie = try encoder.encode(self.movieDetailState.movie)
+        let jsonObject = try JSONSerialization.jsonObject(with: encodedMovie, options: [])
+        
+        alanManager.call(method: "script::setMovie", params: ["movie": jsonObject]) { (error, result) in }
+      } catch {
+        print("ERRO: ", error)
+      }
     }
   }
 }

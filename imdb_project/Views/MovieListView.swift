@@ -13,9 +13,15 @@ struct MovieListView: View {
   @ObservedObject private var upcomingState = MovieListState()
   @ObservedObject private var topRatedState = MovieListState()
   @ObservedObject private var popularState = MovieListState()
+  @EnvironmentObject private var appController: AppController
   let alanManager = UIApplication.shared
   
-  @StateObject private var appController = AppController.shared
+  var isShown: Binding<Bool> {
+    Binding<Bool>(
+      get: { appController.isShowingMovieDetails },
+      set: { appController.isShowingMovieDetails = $0 }
+    )
+  }
   
   var body: some View {
     NavigationView {
@@ -91,6 +97,11 @@ struct MovieListView: View {
 //      self.topRatedState.movies = Movie.stubbedMovies
 //      self.popularState.movies = Movie.stubbedMovies
           
+    }
+    .sheet(isPresented: isShown) {
+      if let movieId = appController.showingMovieId {
+        MovieDetailView(movieId: movieId)
+      }
     }
   }
 }
