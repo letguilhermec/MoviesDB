@@ -10,9 +10,10 @@ import SwiftUI
 struct MoviePosterCarouselView: View {
   let title: String
   let movies: [Movie]
-  @StateObject private var appController = AppController.shared
+  @EnvironmentObject private var appController: AppController
   @StateObject private var imageLoader = ImageLoader()
   @State private var posterImages: [Int: UIImage] = [:]
+  @Binding var isShown: Bool
   let alanManager = UIApplication.shared
   
   var body: some View {
@@ -56,7 +57,10 @@ struct MoviePosterCarouselView: View {
   func createMoviePosterCard(movie: Movie, scrollViewProxy: ScrollViewProxy) -> some View {
     let image = posterImages[movie.id]
     
-    NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+    Button {
+      appController.showingMovieId = movie.id
+      appController.isShowingMovieDetails = true
+    } label: {
       MoviePosterCard(movie: movie, image: image)
         .overlay {
           RoundedRectangle(cornerRadius: 8)
@@ -86,13 +90,11 @@ struct MoviePosterCarouselView: View {
     }
   }
   
-  
-  
-  
 }
 
 struct MoviePosterCarouselView_Previews: PreviewProvider {
   static var previews: some View {
-    MoviePosterCarouselView(title: "Now Playing", movies: Movie.stubbedMovies)
+    MoviePosterCarouselView(title: "Now Playing", movies: Movie.stubbedMovies, isShown: .constant(false))
+      .environmentObject(AppController.shared)
   }
 }

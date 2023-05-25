@@ -10,10 +10,11 @@ import SwiftUI
 struct MovieBackdropCarouselView: View {
   let title: String
   let movies: [Movie]
-  @StateObject private var appController = AppController.shared
+  @EnvironmentObject private var appController: AppController
   @StateObject private var imageLoader = ImageLoader()
   @State private var backdropImages: [Int: UIImage] = [:]
   let alanManager = UIApplication.shared
+  @Binding var isShown: Bool
 
   var body: some View {
     
@@ -69,7 +70,10 @@ struct MovieBackdropCarouselView: View {
     func createMovieBackdropCard(movie: Movie, scrollViewProxy: ScrollViewProxy) -> some View {
       let image = backdropImages[movie.id]
 
-      return NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+      return Button {
+        appController.showingMovieId = movie.id
+        appController.isShowingMovieDetails = true
+      } label: {
         MovieBackdropCard(movie: movie, image: image)
           .frame(width: 272, height: 200)
           .overlay {
@@ -103,6 +107,7 @@ struct MovieBackdropCarouselView: View {
 
 struct MovieBackdropCarouselView_Previews: PreviewProvider {
   static var previews: some View {
-    MovieBackdropCarouselView(title: "Upcoming", movies: Movie.stubbedMovies)
+    MovieBackdropCarouselView(title: "Upcoming", movies: Movie.stubbedMovies, isShown: .constant(false))
+      .environmentObject(AppController.shared)
   }
 }

@@ -29,7 +29,7 @@ struct MovieListView: View {
         ScrollView(.vertical, showsIndicators: false) {
           Group {
             if nowPlayingState.movies != nil {
-              MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!)
+              MoviePosterCarouselView(title: "Now Playing", movies: nowPlayingState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.nowPlayingState.isLoading, error: self.nowPlayingState.error) {
                 self.nowPlayingState.loadMovies(with: .nowPlaying)
@@ -41,7 +41,7 @@ struct MovieListView: View {
           
           Group {
             if upcomingState.movies != nil {
-              MovieBackdropCarouselView(title: "Upcoming", movies: upcomingState.movies!)
+              MovieBackdropCarouselView(title: "Upcoming", movies: upcomingState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.upcomingState.isLoading, error: self.upcomingState.error) {
                 self.upcomingState.loadMovies(with: .upcoming)
@@ -56,7 +56,7 @@ struct MovieListView: View {
           
           Group {
             if topRatedState.movies != nil {
-              MovieBackdropCarouselView(title: "Top Rated", movies: topRatedState.movies!)
+              MovieBackdropCarouselView(title: "Top Rated", movies: topRatedState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.topRatedState.isLoading, error: self.topRatedState.error) {
                 self.topRatedState.loadMovies(with: .topRated)
@@ -68,7 +68,7 @@ struct MovieListView: View {
           
           Group {
             if popularState.movies != nil {
-              MovieBackdropCarouselView(title: "Popular", movies: popularState.movies!)
+              MovieBackdropCarouselView(title: "Popular", movies: popularState.movies!, isShown: isShown)
             } else {
               LoadingView(isLoading: self.popularState.isLoading, error: self.popularState.error) {
                 self.popularState.loadMovies(with: .popular)
@@ -109,5 +109,6 @@ struct MovieListView: View {
 struct MovieListView_Previews: PreviewProvider {
   static var previews: some View {
     MovieListView()
+      .environmentObject(AppController.shared)
   }
 }
