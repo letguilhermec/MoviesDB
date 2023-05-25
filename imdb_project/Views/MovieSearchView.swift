@@ -10,6 +10,7 @@ import SwiftUI
 struct MovieSearchView: View {
   @ObservedObject var movieSearchState = MovieSearchState()
   @EnvironmentObject private var appController: AppController
+  let alanManager = UIApplication.shared
   
   var isShown: Binding<Bool> {
     Binding<Bool>(
@@ -41,14 +42,35 @@ struct MovieSearchView: View {
               }
             }
           }
+          .onAppear {
+            do {
+              let encoder = JSONEncoder()
+              encoder.outputFormatting = .prettyPrinted
+              let encodedMovies = try encoder.encode(self.movieSearchState.movies!)
+              let jsonObject = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
+              
+              alanManager.call(method: "script::setMovieList", params: ["searchList": jsonObject]) { (error, result) in }
+              
+            } catch {
+              print("ERRO: ", error)
+            }
+          }
         }
       }
       .onAppear {
         self.movieSearchState.startObserve()
+        if let query = appController.searchQuery {
+          self.movieSearchState.query = query
+        }
       }
       .sheet(isPresented: isShown) {
         if let movieId = appController.showingMovieId {
           MovieDetailView(movieId: movieId)
+        }
+      }
+      .onChange(of: appController.searchQuery) { value in
+        if let query = value {
+          self.movieSearchState.query = query
         }
       }
       .listStyle(.plain)

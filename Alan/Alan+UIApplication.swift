@@ -215,6 +215,7 @@ extension UIApplication {
     } else if command == "closeMovie" {
       AppController.shared.isShowingMovieDetails = false
     } else if command == "openSearch" {
+      AppController.shared.searchQuery = json["data"] as? String ?? ""
       AppController.shared.isSearching = true
     }
 

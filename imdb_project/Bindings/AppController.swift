@@ -7,7 +7,12 @@
 
 import SwiftUI
 
-class AppController: ObservableObject {
+class AppController: ObservableObject, Equatable {
+  
+  static func == (lhs: AppController, rhs: AppController) -> Bool {
+    return lhs.searchQuery == rhs.searchQuery
+  }
+  
   static let shared = AppController()
   
 //  var isNowOpen: Bool = false
@@ -21,6 +26,9 @@ class AppController: ObservableObject {
   @Published var selectedType: String?
   @Published var selectedMovie: [Movie]?
   @Published var isSearching: Bool = false
+  @Published var searchQuery: String?
+  
+  
   
   private init() {}
 }
