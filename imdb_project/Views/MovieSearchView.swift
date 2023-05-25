@@ -9,6 +9,14 @@ import SwiftUI
 
 struct MovieSearchView: View {
   @ObservedObject var movieSearchState = MovieSearchState()
+  @EnvironmentObject private var appController: AppController
+  
+  var isShown: Binding<Bool> {
+    Binding<Bool>(
+      get: { appController.isShowingMovieDetails },
+      set: { appController.isShowingMovieDetails = $0 }
+    )
+  }
   
   var body: some View {
     NavigationView {
@@ -23,7 +31,10 @@ struct MovieSearchView: View {
         
         if self.movieSearchState.movies != nil {
           ForEach(self.movieSearchState.movies!) { movie in
-            NavigationLink(destination: MovieDetailView(movieId: movie.id)) {
+            Button {
+              appController.showingMovieId = movie.id
+              appController.isShowingMovieDetails = true
+            } label: {
               VStack(alignment: .leading) {
                 Text(movie.title)
                 Text(movie.yearText)
@@ -35,6 +46,11 @@ struct MovieSearchView: View {
       .onAppear {
         self.movieSearchState.startObserve()
       }
+      .sheet(isPresented: isShown) {
+        if let movieId = appController.showingMovieId {
+          MovieDetailView(movieId: movieId)
+        }
+      }
       .listStyle(.plain)
       .navigationBarTitle("Search")
     }
@@ -44,5 +60,6 @@ struct MovieSearchView: View {
 struct MovieSearchView_Previews: PreviewProvider {
   static var previews: some View {
     MovieSearchView()
+      .environmentObject(AppController.shared)
   }
 }
