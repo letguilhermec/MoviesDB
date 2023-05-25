@@ -15,11 +15,6 @@ class AppController: ObservableObject, Equatable {
   
   static let shared = AppController()
   
-//  var isNowOpen: Bool = false
-//  var isUpcomingOpen: Bool = false
-//  var isPopularOpen: Bool = false
-//  var isTopRatedOpen: Bool = false
-//  var isSearchOpen: Bool = false
   @Published var isShowingMovieDetails: Bool = false
   @Published var showingMovieId: Int? = 0
   @Published var selectedIndice: Int = 0
@@ -27,8 +22,6 @@ class AppController: ObservableObject, Equatable {
   @Published var selectedMovie: [Movie]?
   @Published var isSearching: Bool = false
   @Published var searchQuery: String?
-  
-  
   
   private init() {}
 }
