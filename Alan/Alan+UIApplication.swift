@@ -196,12 +196,16 @@ extension UIApplication {
     } else if command == "nilMovie" {
       AppController.shared.selectedMovie = nil
     } else if command == "nowPlayingMovies" {
+      AppController.shared.isSearching = false
       AppController.shared.selectedType = "Now Playing"
     } else if command == "upcomingMovies" {
+      AppController.shared.isSearching = false
       AppController.shared.selectedType = "Upcoming"
     } else if command == "popularMovies" {
+      AppController.shared.isSearching = false
       AppController.shared.selectedType = "Popular"
     } else if command == "topRatedMovies" {
+      AppController.shared.isSearching = false
       AppController.shared.selectedType = "Top Rated"
     } else if command == "highlight" {
       AppController.shared.selectedIndice = json["data"] as? Int ?? 0
@@ -210,6 +214,8 @@ extension UIApplication {
       AppController.shared.showingMovieId = json["data"] as? Int ?? nil
     } else if command == "closeMovie" {
       AppController.shared.isShowingMovieDetails = false
+    } else if command == "openSearch" {
+      AppController.shared.isSearching = true
     }
 
   }
