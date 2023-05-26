@@ -217,6 +217,8 @@ extension UIApplication {
     } else if command == "openSearch" {
       AppController.shared.searchQuery = json["data"] as? String ?? ""
       AppController.shared.isSearching = true
+    } else if command == "openHome" {
+      AppController.shared.isSearching = false
     }
 
   }

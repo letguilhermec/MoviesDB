@@ -102,6 +102,9 @@ struct MovieListView: View {
     }
     .onChange(of: appController.isSearching) { value in
       isSearching = value
+      if value == false {
+        appController.searchQuery = ""
+      }
     }
     .sheet(isPresented: isShown) {
       if let movieId = appController.showingMovieId {

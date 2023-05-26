@@ -46,10 +46,12 @@ struct MovieSearchView: View {
             do {
               let encoder = JSONEncoder()
               encoder.outputFormatting = .prettyPrinted
-              let encodedMovies = try encoder.encode(self.movieSearchState.movies!)
-              let jsonObject = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
-              
-              alanManager.call(method: "script::setMovieList", params: ["searchList": jsonObject]) { (error, result) in }
+              if let movies = self.movieSearchState.movies {
+                let encodedMovies = try encoder.encode(movies)
+                let jsonObject = try JSONSerialization.jsonObject(with: encodedMovies, options: [])
+                
+                alanManager.call(method: "script::setMovieList", params: ["searchList": jsonObject]) { (error, result) in }
+              }
               
             } catch {
               print("ERRO: ", error)
