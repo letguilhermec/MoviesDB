@@ -17,7 +17,7 @@ class AppController: ObservableObject, Equatable {
   
   @Published var isShowingMovieDetails: Bool = false
   @Published var showingMovieId: Int? = 0
-  @Published var selectedIndice: Int = 0
+  @Published var selectedIndice: Int? = 0
   @Published var selectedType: String?
   @Published var selectedMovie: [Movie]?
   @Published var isSearching: Bool = false

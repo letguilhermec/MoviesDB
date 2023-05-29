@@ -17,10 +17,6 @@ struct MovieListView: View {
   @Binding var isSearching: Bool
   let alanManager = UIApplication.shared
   
-//  init(appController: AppController) {
-//    self.appController = appController
-//  }
-  
   var isShown: Binding<Bool> {
     Binding<Bool>(
       get: { appController.isShowingMovieDetails },
