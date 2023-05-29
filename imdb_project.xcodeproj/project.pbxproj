@@ -39,6 +39,9 @@
 		B223B3882A16656D00708DC8 /* Alan+UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */; };
 		B223B38E2A17C11000708DC8 /* VerticalListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B223B38D2A17C11000708DC8 /* VerticalListView.swift */; };
 		B2A57FAE2A1BAF6A00311D58 /* AppController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2A57FAD2A1BAF6A00311D58 /* AppController.swift */; };
+		B2B39A1D2A24EF72003AB629 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B39A1C2A24EF72003AB629 /* SplashScreen.swift */; };
+		B2B39A202A24F040003AB629 /* TextExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B39A1F2A24F040003AB629 /* TextExtensions.swift */; };
+		B2B39A222A24F79B003AB629 /* AppLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B2B39A212A24F79B003AB629 /* AppLoadingView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -89,6 +92,9 @@
 		B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Alan+UIApplication.swift"; sourceTree = "<group>"; };
 		B223B38D2A17C11000708DC8 /* VerticalListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerticalListView.swift; sourceTree = "<group>"; };
 		B2A57FAD2A1BAF6A00311D58 /* AppController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppController.swift; sourceTree = "<group>"; };
+		B2B39A1C2A24EF72003AB629 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
+		B2B39A1F2A24F040003AB629 /* TextExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextExtensions.swift; sourceTree = "<group>"; };
+		B2B39A212A24F79B003AB629 /* AppLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLoadingView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +129,7 @@
 		B223B33C2A13B6F100708DC8 /* imdb_project */ = {
 			isa = PBXGroup;
 			children = (
+				B2B39A1E2A24F02C003AB629 /* Extensions */,
 				B223B3852A16619400708DC8 /* imdb-project-Info.plist */,
 				B223B3622A13EE6300708DC8 /* Bindings */,
 				B223B35F2A13EDF400708DC8 /* Views */,
@@ -130,6 +137,7 @@
 				B223B34E2A13C43700708DC8 /* Services */,
 				B223B34B2A13BEA200708DC8 /* Models */,
 				B223B33D2A13B6F100708DC8 /* imdb_projectApp.swift */,
+				B2B39A212A24F79B003AB629 /* AppLoadingView.swift */,
 				B223B33F2A13B6F100708DC8 /* ContentView.swift */,
 				B223B3532A13CF0500708DC8 /* Utils.swift */,
 				B223B3412A13B6F300708DC8 /* Assets.xcassets */,
@@ -187,6 +195,7 @@
 				B223B3742A14072500708DC8 /* MovieDetailView.swift */,
 				B223B37A2A1547E500708DC8 /* MovieSearchView.swift */,
 				B223B38D2A17C11000708DC8 /* VerticalListView.swift */,
+				B2B39A1C2A24EF72003AB629 /* SplashScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -220,6 +229,14 @@
 				B223B3872A16656D00708DC8 /* Alan+UIApplication.swift */,
 			);
 			path = Alan;
+			sourceTree = "<group>";
+		};
+		B2B39A1E2A24F02C003AB629 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				B2B39A1F2A24F040003AB629 /* TextExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,16 +323,19 @@
 				B223B37B2A1547E500708DC8 /* MovieSearchView.swift in Sources */,
 				B223B3682A13F3DF00708DC8 /* MoviePosterCard.swift in Sources */,
 				B223B3732A13FB3800708DC8 /* LoadingView.swift in Sources */,
+				B2B39A202A24F040003AB629 /* TextExtensions.swift in Sources */,
 				B223B3572A13EBAE00708DC8 /* Movie+Stub.swift in Sources */,
 				B223B3712A13FAA900708DC8 /* ActivityIndicatorView.swift in Sources */,
 				B223B37D2A15482200708DC8 /* SearchBarView.swift in Sources */,
 				B223B3882A16656D00708DC8 /* Alan+UIApplication.swift in Sources */,
 				B223B36E2A13F7E600708DC8 /* MovieListState.swift in Sources */,
 				B223B36A2A13F67000708DC8 /* MoviePosterCarouselView.swift in Sources */,
+				B2B39A222A24F79B003AB629 /* AppLoadingView.swift in Sources */,
 				B223B3642A13EE7700708DC8 /* ImageLoader.swift in Sources */,
 				B223B3792A1543BA00708DC8 /* SafariView.swift in Sources */,
 				B223B34D2A13C3B300708DC8 /* Movie.swift in Sources */,
 				B223B3662A13F21200708DC8 /* MovieBackdropCarouselView.swift in Sources */,
+				B2B39A1D2A24EF72003AB629 /* SplashScreen.swift in Sources */,
 				B223B36C2A13F7C400708DC8 /* MovieListView.swift in Sources */,
 				B2A57FAE2A1BAF6A00311D58 /* AppController.swift in Sources */,
 				B223B3752A14072500708DC8 /* MovieDetailView.swift in Sources */,
