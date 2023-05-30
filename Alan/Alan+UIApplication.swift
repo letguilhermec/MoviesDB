@@ -196,6 +196,8 @@ extension UIApplication {
       AppController.shared.selectedType = nil
     } else if command == "nilMovie" {
       AppController.shared.selectedMovie = nil
+    } else if command == "nilSearchTitle" {
+      AppController.shared.searchQuery = ""
     } else if command == "nowPlayingMovies" {
       AppController.shared.isSearching = false
       AppController.shared.selectedType = "Now Playing"
