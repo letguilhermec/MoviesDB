@@ -15,6 +15,7 @@ struct SplashScreen: View {
         .scalableText()
         .foregroundColor(Color(color))
         .padding(.horizontal, 30)
+        .frame(width: width)
     }
   }
   
@@ -22,12 +23,13 @@ struct SplashScreen: View {
     ZStack {
       Color("background")
         .ignoresSafeArea()
-      banner(text: "DB", color: "appColor2", width: 140)
-        .splashAnimation(finalYPosition: 160, delay: 0)
-      banner(text: "Movie", color: "appColor1", width: 220)
+      banner(text: "DB", color: "appColor6", width: 405)
+        .splashAnimation(finalYPosition: 140, delay: 0)
+      banner(text: "Movie", color: "appColor5", width: 405)
         .splashAnimation(finalYPosition: 0, delay: 0.2)
-      banner(text: "The", color: "appColor1", width: 160)
-        .splashAnimation(finalYPosition: -160, delay: 0.4)
+      banner(text: "THE", color: "appColor5", width: 200)
+        .splashAnimation(finalYPosition: -80, delay: 0.4)
+        .offset(x: -100)
     }
   }
 }
@@ -46,9 +48,6 @@ private struct SplashAnimation: ViewModifier {
   func body(content: Content) -> some View {
     content
       .offset(y: animating ? -700 : finalYPosition)
-      .rotationEffect(
-        animating ? .zero
-        : Angle(degrees: Double.random(in: -10...10)))
       .animation(animation.delay(delay), value: animating)
       .onAppear {
         animating = false
