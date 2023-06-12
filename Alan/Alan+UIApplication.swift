@@ -192,7 +192,6 @@ extension UIApplication {
         self.printTest()
       }
     } else if command == "nilType" {
-      AppController.shared.selectedIndice = -1
       AppController.shared.selectedType = nil
     } else if command == "nilMovie" {
       AppController.shared.selectedMovie = nil
@@ -212,6 +211,8 @@ extension UIApplication {
       AppController.shared.selectedType = "Top Rated"
     } else if command == "highlight" {
       AppController.shared.selectedIndice = json["data"] as? Int ?? 0
+    } else if command == "zeroIndex" {
+      AppController.shared.selectedIndice = -1
     } else if command == "openMovie" {
       AppController.shared.isShowingMovieDetails = true
       AppController.shared.showingMovieId = json["data"] as? Int ?? nil
