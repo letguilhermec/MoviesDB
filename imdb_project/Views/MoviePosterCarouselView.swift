@@ -74,8 +74,8 @@ struct MoviePosterCarouselView: View {
     .onChange(of: appController.selectedIndice) { selectedIndice in
       if appController.selectedType == "Now Playing" && selectedIndice == movie.id {
         scrollViewProxy.scrollTo(movie.id, anchor: .center)
-      } else if appController.selectedType == "Now Playing" && selectedIndice == -1 {
-        scrollViewProxy.scrollTo(movies[0].id, anchor: .center)
+      } else if selectedIndice == -1 {
+        scrollViewProxy.scrollTo(self.movies.first?.id, anchor: .center)
       }
     }
   }
