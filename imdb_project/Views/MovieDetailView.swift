@@ -173,6 +173,9 @@ struct MovieDetailListView: View {
           print("ERRO: ", error)
         }
       }
+      .onDisappear {
+        alanManager.call(method: "script::clearMovie", params: ["movie": "none"]) { (error, result) in }
+      }
       .sheet(item: self.$selectedTrailer) { trailer in
         SafariView(url: trailer.youtubeURL!)
       }
