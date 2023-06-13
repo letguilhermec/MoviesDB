@@ -195,8 +195,9 @@ extension UIApplication {
       AppController.shared.selectedType = nil
     } else if command == "nilMovie" {
       AppController.shared.selectedMovie = nil
+      AppController.shared.showingMovieId = nil
     } else if command == "nilSearchTitle" {
-      AppController.shared.searchQuery = ""
+      AppController.shared.searchQuery = nil
     } else if command == "nowPlayingMovies" {
       AppController.shared.isSearching = false
       AppController.shared.selectedType = "Now Playing"
@@ -219,7 +220,7 @@ extension UIApplication {
     } else if command == "closeMovie" {
       AppController.shared.isShowingMovieDetails = false
     } else if command == "openSearch" {
-      AppController.shared.searchQuery = json["data"] as? String ?? ""
+      AppController.shared.searchQuery = json["data"] as? String ?? nil
       AppController.shared.isSearching = true
     } else if command == "openHome" {
       AppController.shared.isSearching = false
